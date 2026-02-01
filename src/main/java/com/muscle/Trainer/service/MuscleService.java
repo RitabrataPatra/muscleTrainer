@@ -19,6 +19,19 @@ public class MuscleService {
         return muscleRepository.findByNameIgnoreCase(name);
     }
 
+    public List<MuscleDTO> getAllMuscles() {
+
+        return muscleRepository.findAll()
+                .stream()
+                .map(muscle ->
+                        new MuscleDTO(
+                                muscle.getId(),
+                                muscle.getName()
+                        )
+                )
+                .toList();
+    }
+
     public MuscleDTO getMuscleDto(String name) {
 
         Muscle muscle = muscleRepository
@@ -43,7 +56,7 @@ public class MuscleService {
                 })
                 .toList();
 
-        dto.setExercises(exercises);
+//        dto.setExercises(exercises);
         return dto;
     }
 

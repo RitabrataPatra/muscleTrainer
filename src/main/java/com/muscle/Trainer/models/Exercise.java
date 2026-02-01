@@ -17,6 +17,9 @@ public class Exercise {
     @Column(length = 2000)
     private String howToPerform;
 
+    @Column(unique = true)
+    private String sourceUrl;
+
 //    @Column(length = 2000)
 //    private String posture;
 

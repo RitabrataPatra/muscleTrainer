@@ -88,6 +88,7 @@ public class ScraperService {
             exercise.setHowToPerform(instructions);
             exercise.setSets(3);
             exercise.setReps(12);
+            exercise.setSourceUrl(url);
 //            exercise.setExperienceLevel(experience);
 //            exercise.setSecondaryMuscles(secondaryMuscles);
 //            exercise.setMuscle(muscle);

@@ -8,4 +8,7 @@ import java.util.Optional;
 public interface MuscleRepository extends JpaRepository<Muscle , Long> {
     Optional<Muscle> findByNameIgnoreCase(String name);
     boolean existsByNameIgnoreCase(String name);
+
+    boolean existsBySourceUrl(String sourceUrl);
+
 }

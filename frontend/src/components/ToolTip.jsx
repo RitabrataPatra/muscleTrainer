@@ -1,0 +1,7 @@
+export default function Tooltip({ text }) {
+  return (
+    <div className="tooltip">
+      {text}
+    </div>
+  );
+}

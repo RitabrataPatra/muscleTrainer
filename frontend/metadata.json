@@ -1,0 +1,5 @@
+{
+  "name": "TitanMuscle Explorer",
+  "description": "An interactive anatomical explorer that provides detailed exercise guides for various muscle groups using AI-powered insights.",
+  "requestFramePermissions": []
+}
