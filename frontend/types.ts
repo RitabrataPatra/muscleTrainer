@@ -2,6 +2,7 @@
 export interface Muscle {
   id: string;
   name: string;
+  imageUrl:string
 }
 
 export interface Exercise {

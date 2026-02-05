@@ -10,6 +10,7 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -29,6 +30,8 @@ public class MuscleScraperService {
                     .get();
 
             Elements muscles = doc.select("div.cell a:has(.category-name)");
+
+
             int savedCount = 0;
             for (Element el : muscles) {
 
@@ -36,18 +39,41 @@ public class MuscleScraperService {
 
                 String url = el.absUrl("href"); // 🔥 handles .html automatically
 
-                if (!muscleRepository.existsBySourceUrl(url)) {
+                Element cell = el.closest("div.cell");
+                Element img = cell.selectFirst("img");
+                String imageUrl = img != null
+                        ? (img.hasAttr("data-src") ? img.absUrl("data-src") : img.absUrl("src"))
+                        : null;
+                Muscle muscle = muscleRepository.findBySourceUrl(url);
 
-                    Muscle muscle = new Muscle();
+                if (muscle == null) {
+
+                    muscle = new Muscle();
                     muscle.setName(name);
                     muscle.setSourceUrl(url);
+                    muscle.setImageUrl(imageUrl);
 
                     muscleRepository.save(muscle);
-
-                    System.out.println("Saved muscle -> " + name);
-
                     savedCount++;
+
+                } else if (muscle.getImageUrl() == null && imageUrl != null) {
+
+                    muscle.setImageUrl(imageUrl);
+                    muscleRepository.save(muscle);
                 }
+//                if (!muscleRepository.existsBySourceUrl(url)) {
+//
+//                    Muscle muscle = new Muscle();
+//                    muscle.setName(name);
+//                    muscle.setSourceUrl(url);
+//                    muscle.setImageUrl(imageUrl);
+//
+//                    muscleRepository.save(muscle);
+//
+//                    System.out.println("Saved muscle -> " + name);
+//
+//                    savedCount++;
+//                }
 
             }
 

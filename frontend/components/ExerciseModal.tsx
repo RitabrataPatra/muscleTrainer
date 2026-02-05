@@ -62,8 +62,8 @@ const ExerciseModal: React.FC<ExerciseModalProps> = ({ muscle, exercises, onClos
                 nameNew += newNameArr[index] + " ";
                 
               }
-              console.log(ex.howToPerform);
-              console.log(nameNew);
+              // console.log(ex.howToPerform);
+              // console.log(nameNew);
               return (
                 <div key={idx} className="bg-slate-800/40 border border-slate-700/50 p-5 rounded-xl hover:border-green-500/30 transition-all">
                   <div className="flex justify-between items-start mb-2">

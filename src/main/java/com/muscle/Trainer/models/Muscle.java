@@ -19,6 +19,9 @@ public class Muscle {
     @Column(unique = true , nullable = false)
     private String sourceUrl;
 
+
+    @Column(unique = true)
+    private String imageUrl;
     @OneToMany(
             mappedBy = "muscle",
             cascade = CascadeType.ALL,

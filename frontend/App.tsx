@@ -51,7 +51,7 @@ const App: React.FC = () => {
           <div className="p-6">
             <h2 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Select Muscle Group</h2>
             <div className="space-y-1">
-              {console.log(typeof(muscles))}
+              {/* {console.log(typeof(muscles))} */}
               {muscles.map((muscle) => (
                 <button
                   key={muscle.id}
@@ -85,15 +85,15 @@ const App: React.FC = () => {
             <span className="text-[25vw] font-black italic uppercase leading-none">{hoveredMuscle.id}</span>
           </div>
 
-          <div className="max-w-4xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10 animate-in slide-in-from-right-8 duration-500">
+          <div className="max-w-4xl w-full flex flex-row justify-center gap-12 items-center z-10 animate-in slide-in-from-right-8 duration-500">
             {/* Dynamic Image */}
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-              <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl aspect-[4/5] transform group-hover:scale-[1.02] transition-transform duration-500">
+              <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl transform group-hover:scale-[2] transition-transform duration-500">
                 <img 
-                  src={hoveredMuscle.image} 
+                  src={hoveredMuscle.imageUrl} 
                   alt={hoveredMuscle.name}
-                  className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-700"
+                  className="transition-all duration-700 object-fit"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60"></div>
                 
@@ -108,7 +108,7 @@ const App: React.FC = () => {
             </div>
 
             {/* Muscle Info */}
-            <div className="space-y-8">
+            {/* <div className="space-y-8">
               <div>
                 <span className="text-green-500 font-bold text-sm tracking-widest uppercase mb-2 block">{hoveredMuscle.category}</span>
                 <h2 className="text-5xl font-black text-white leading-tight mb-4 tracking-tight">Focus on your <br /><span className="text-green-400">{hoveredMuscle.name}</span>.</h2>
@@ -136,14 +136,14 @@ const App: React.FC = () => {
                   <span className="text-xs text-slate-500 font-medium">Joined by <strong className="text-slate-300">2.4k others</strong> training this muscle</span>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
         {/* Mobile Preview View (Mobile only fallback) */}
         <div className="md:hidden p-6 bg-slate-900 border-t border-slate-800">
            <div className="flex items-center gap-4">
-              <img src={hoveredMuscle.image} className="w-20 h-20 rounded-xl object-cover border border-slate-700" alt={hoveredMuscle.name} />
+              <img src={hoveredMuscle.imageUrl} className="w-20 h-20 rounded-xl object-cover border border-slate-700" alt={hoveredMuscle.name} />
               <div>
                  <h3 className="text-xl font-bold text-white">{hoveredMuscle.name}</h3>
                  <p className="text-slate-400 text-sm line-clamp-1">{hoveredMuscle.description}</p>

@@ -26,7 +26,8 @@ public class MuscleService {
                 .map(muscle ->
                         new MuscleDTO(
                                 muscle.getId(),
-                                muscle.getName()
+                                muscle.getName(),
+                                muscle.getImageUrl()
                         )
                 )
                 .toList();
